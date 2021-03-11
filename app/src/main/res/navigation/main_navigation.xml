@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/people"
-        android:name="com.davidups.starwars.features.people.view.fragments.PeopleFragment"
+        android:name="com.talentomobile.starwars.features.people.view.fragments.PeopleFragment"
         android:label="People"
         tools:layout="@layout/fragment_movies" />
 
     <fragment
         android:id="@+id/planets"
-        android:name="com.davidups.starwars.features.planets.view.fragments.PlanetsListFragment"
+        android:name="com.talentomobile.starwars.features.planets.view.fragments.PlanetsListFragment"
         android:label="Planets"
-        tools:layout="@layout/fragment_planets"/>
+        tools:layout="@layout/fragment_planets" />
 
 </navigation>

@@ -10,7 +10,7 @@ We love clean code and beautiful layouts, structured implementation and testable
 
 This repository contains an Android app that retrieves a list of Star Wars Movies.
 
-![](https://raw.githubusercontent.com/talento-mobile/android-challenge/main/Screenshot%202020-10-29%20at%2009.19.50.png)
+![](https://raw.githubusercontent.com/talento-mobile/android-challenge/main/star-wars-mobile.png)
 
 ## Tasks
 
@@ -22,8 +22,10 @@ Damn it! It seems the project has some kind of errors...could you help us to fix
 
 ### New features to add
 
-1.  Go to an ad detail from ads list.
-2.  Favourite ads
+1.  Go to a person detail from people list.
+2.  Favourite people using room database.
+
+You can find the api documentation [here](https://swapi.dev/documentation)
 
 ### Some optional tasks to do (bonus):
 

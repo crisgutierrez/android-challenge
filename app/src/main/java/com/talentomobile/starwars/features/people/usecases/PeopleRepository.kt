@@ -7,7 +7,9 @@ import com.talentomobile.starwars.features.people.models.view.PeopleView
 import com.talentomobile.starwars.features.people.services.PeopleService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 interface PeopleRepository {
 

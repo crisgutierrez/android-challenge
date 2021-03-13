@@ -1,10 +1,11 @@
 package com.talentomobile.starwars.core.di
 
+import com.talentomobile.starwars.features.people.usecases.GetPeople
 import com.talentomobile.starwars.features.people.usecases.PeopleRepository
 import org.koin.dsl.module
 
-val repositoryModule = module {
+val useCaseModule = module {
 
-    factory<PeopleRepository> { PeopleRepository.Network(get(), get()) }
+    factory { GetPeople(get<PeopleRepository>()) }
 
 }

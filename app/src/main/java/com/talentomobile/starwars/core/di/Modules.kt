@@ -2,6 +2,7 @@ package com.talentomobile.starwars.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.talentomobile.skell.BuildConfig
 import com.talentomobile.starwars.core.platform.ContextHandler
 import com.talentomobile.starwars.core.platform.NetworkHandler
 import com.talentomobile.starwars.features.people.view.adapters.PeopleAdapter

@@ -14,5 +14,5 @@ data class Person(
     val gender: String?
 ) {
 
-    fun toPersonView() = PersonView(name ?: String.empty())
+    fun toPersonView() = PersonView(name ?: String.empty(), height, mass, hair_color, skin_color, eye_color, birth_year, gender)
 }

@@ -2,6 +2,8 @@ package com.talentomobile.starwars.features.people.view.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat.getColor
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.talentomobile.skell.R
 import com.talentomobile.skell.databinding.FragmentMoviesBinding
@@ -14,6 +16,9 @@ import com.talentomobile.starwars.features.people.models.view.PeopleView
 import com.talentomobile.starwars.features.people.view.adapters.PeopleAdapter
 import com.talentomobile.starwars.features.people.view.viewmodels.PeopleViewModel
 import com.kotlinpermissions.notNull
+import com.talentomobile.starwars.core.navigation.MainActivity
+import com.talentomobile.starwars.features.people.models.view.PersonView
+import kotlinx.android.synthetic.main.navigation_activity.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -21,15 +26,16 @@ class PeopleFragment : BaseFragment(R.layout.fragment_movies) {
 
     private val binding by viewBinding(FragmentMoviesBinding::bind)
 
-    private val peopleViewModel: PeopleViewModel by viewModel<PeopleViewModel>()
+    private val peopleViewModel: PeopleViewModel by viewModel()
     private val peopleAdapter: PeopleAdapter by inject()
 
+    // region LIFECYCLE ----------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         with(peopleViewModel) {
             observe(showSpinner, ::handleShowSpinner)
-            observe(people, ::handleMovies)
+            observe(people, ::handlePeople)
             failure(failure, ::handleFailure)
         }
     }
@@ -40,8 +46,11 @@ class PeopleFragment : BaseFragment(R.layout.fragment_movies) {
         initView()
         initListeners()
     }
+    // endregion
 
+    // region PRIVATE METHODS -----------------------------------------------------------------------
     private fun initView() {
+        setUpAppbar()
         peopleViewModel.getPeople()
 
         binding.rvMovies.apply {
@@ -50,11 +59,19 @@ class PeopleFragment : BaseFragment(R.layout.fragment_movies) {
         }
     }
 
-    private fun initListeners() {}
+    private fun setUpAppbar() {
+        (requireActivity() as MainActivity).supportActionBar!!.show()
+    }
 
-    private fun handleMovies(people: PeopleView?) {
-        people.notNull { movies ->
-            peopleAdapter.collection = movies.results.orEmpty()
+    private fun initListeners() {
+        peopleAdapter.clickListener = { personView, image ->
+            navigateToPersonDetailFragment(personView, image)
+        }
+    }
+
+    private fun handlePeople(people: PeopleView?) {
+        people.notNull { peopleList ->
+            peopleAdapter.collection = peopleList.results.orEmpty()
         }
     }
 
@@ -67,4 +84,13 @@ class PeopleFragment : BaseFragment(R.layout.fragment_movies) {
             setTitle(getString(R.string.common_error))
         }.show()
     }
+
+    private fun navigateToPersonDetailFragment(personView: PersonView, image: String) {
+        findNavController().navigate(
+            PeopleFragmentDirections.actionPeopleToPersonDetailFragment()
+                .setPerson(personView)
+                .setImage(image)
+        )
+    }
+    // endregion
 }

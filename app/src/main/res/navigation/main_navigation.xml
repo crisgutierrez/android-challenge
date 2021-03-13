@@ -9,12 +9,37 @@
         android:id="@+id/people"
         android:name="com.talentomobile.starwars.features.people.view.fragments.PeopleFragment"
         android:label="People"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_people_to_person_detail_fragment"
+            app:destination="@id/person_detail_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/planets"
         android:name="com.talentomobile.starwars.features.planets.view.fragments.PlanetsListFragment"
         android:label="Planets"
         tools:layout="@layout/fragment_planets" />
+
+    <fragment
+        android:id="@+id/person_detail_fragment"
+        android:name="com.talentomobile.starwars.features.people.view.fragments.PersonDetailFragment"
+        android:label="PersonDetailFragment"
+        tools:layout="@layout/fragment_person">
+        <argument
+            android:name="person"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="com.talentomobile.starwars.features.people.models.view.PersonView" />
+        <argument
+            android:name="image"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.talentomobile.skell.R
-import com.talentomobile.skell.core.extensions.inflate
-import com.talentomobile.skell.core.extensions.loadFromUrl
+import com.talentomobile.starwars.core.extensions.inflate
+import com.talentomobile.starwars.core.extensions.loadFromUrl
 import com.talentomobile.starwars.core.extensions.randomImage
 import com.talentomobile.starwars.features.people.models.view.PersonView
 import kotlin.properties.Delegates
@@ -17,7 +17,7 @@ class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    internal var clickListener: (PersonView) -> Unit = { }
+    internal var clickListener: ((PersonView, String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(R.layout.item_person_row))
@@ -30,11 +30,12 @@ class PeopleAdapter : RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(person: PersonView, clickListener: (PersonView) -> Unit) {
-            itemView.ivBanner.loadFromUrl(String.randomImage())
+        fun bind(person: PersonView, clickListener: ((PersonView, String) -> Unit)?) {
+            val image = String.randomImage()
+            itemView.ivBanner.loadFromUrl(image)
             itemView.tvName.text = person.name
             itemView.cvPerson.setOnClickListener {
-                clickListener(person)
+                clickListener?.invoke(person, image)
             }
         }
     }

@@ -6,4 +6,13 @@
     <string name="generic_error_title">Upsss!</string>
     <string name="generic_error_body">Parece que tenemos problemas, estamos trabajando para solucionarlo. Por favor, vuelve a intentarlo más tarde.</string>
     <string name="common_error">Ha ocurrido un error</string>
+
+<!--    PersonDetailFragment    -->
+    <string name="birthday_label">Birthday:</string>
+    <string name="gender_label">Gender:</string>
+    <string name="height_label">Height:</string>
+    <string name="hair_color_label">Hair color:</string>
+    <string name="eye_color_label">Eye color:</string>
+    <string name="skin_color_label">Skin color:</string>
+    <string name="mass_label">Mass:</string>
 </resources>

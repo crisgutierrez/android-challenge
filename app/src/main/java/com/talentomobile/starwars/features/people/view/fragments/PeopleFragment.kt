@@ -15,12 +15,13 @@ import com.talentomobile.starwars.features.people.view.adapters.PeopleAdapter
 import com.talentomobile.starwars.features.people.view.viewmodels.PeopleViewModel
 import com.kotlinpermissions.notNull
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class PeopleFragment : BaseFragment(R.layout.fragment_movies) {
 
     private val binding by viewBinding(FragmentMoviesBinding::bind)
 
-    private val peopleViewModel: PeopleViewModel by
+    private val peopleViewModel: PeopleViewModel by viewModel<PeopleViewModel>()
     private val peopleAdapter: PeopleAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {

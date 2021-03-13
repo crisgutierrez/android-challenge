@@ -1,12 +1,7 @@
 package com.talentomobile.starwars
 
 import android.app.Application
-import com.talentomobile.starwars.core.di.applicationModule
-import com.talentomobile.starwars.core.di.databaseModule
-import com.talentomobile.starwars.core.di.networkModule
-import com.talentomobile.starwars.core.di.dataSourceModule
-import com.talentomobile.starwars.core.di.repositoryModule
-import com.talentomobile.starwars.core.di.viewModelModule
+import com.talentomobile.starwars.core.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -22,6 +17,7 @@ class AndroidApplication : Application() {
                 networkModule,
                 applicationModule,
                 viewModelModule,
+                useCaseModule,
                 repositoryModule,
                 dataSourceModule,
                 databaseModule

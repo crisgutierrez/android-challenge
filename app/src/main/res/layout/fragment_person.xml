@@ -45,17 +45,30 @@
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_16"
                 android:layout_marginTop="@dimen/size_16"
-                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_size_25"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/ivFavButton"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Luke Skywalker"/>
+                tools:text="Luke Skywalker" />
+
+            <ImageButton
+                android:id="@+id/ivFavButton"
+                android:layout_width="@dimen/size_42"
+                android:layout_height="@dimen/size_42"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvBirthYearLabel"

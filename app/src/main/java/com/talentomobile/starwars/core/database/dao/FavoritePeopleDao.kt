@@ -19,7 +19,7 @@ interface FavoritePeopleDao {
     suspend fun getAllFavoritePeople(): List<FavoritePeopleEntity>
 
     @Query("SELECT isFavorite FROM ${FavoritePeopleEntity.TABLE_NAME} WHERE name LIKE :name")
-    suspend fun getFavoritePersonById(name: String): Boolean
+    suspend fun getFavoritePersonById(name: String): Boolean?
 
 
     //DELETE

@@ -30,7 +30,7 @@ class PersonDetailViewModel(
         getPersonFavoriteStateJob = viewModelScope.launch {
            getPersonFavoriteState(name)
                 .onEach { isFavorite.value = it }
-                .catch { failure -> handleFailure(failure) }.launchIn(viewModelScope)
+               .launchIn(viewModelScope)
 
         }
     }
@@ -45,7 +45,8 @@ class PersonDetailViewModel(
         setPersonFavoriteStateJob = viewModelScope.launch {
             setPersonFavoriteState(PersonFavoriteParams(name, isFavorite))
                 .onEach { /* Nothing to do here*/ }
-                .catch { failure -> handleFailure(failure) }.launchIn(viewModelScope)
+                .catch { failure -> handleFailure(failure) }
+                .launchIn(viewModelScope)
         }
     }
 }

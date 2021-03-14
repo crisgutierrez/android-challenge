@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flowOn
 
 interface FavoritePeopleRepository {
 
-    fun getPersonFavoriteState(name: String): Flow<Boolean>
+    fun getPersonFavoriteState(name: String): Flow<Boolean?>
 
     fun setPersonFavoriteState(name: String, isFavorite: Boolean): Flow<Unit>
 

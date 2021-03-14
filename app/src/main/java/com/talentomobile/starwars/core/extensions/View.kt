@@ -1,4 +1,4 @@
-package com.talentomobile.skell.core.extensions
+package com.talentomobile.starwars.core.extensions
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.BaseTarget
+import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
@@ -32,11 +33,28 @@ fun View.invisible() {
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 
-fun ImageView.loadFromUrl(url: String) =
+fun ImageView.loadFromUrl(
+    url: String,
+    onLoaded: (resource: Drawable?) -> Unit = {}
+) =
     Glide.with(this.context.applicationContext)
         .load(url)
         .transition(DrawableTransitionOptions.withCrossFade())
-        .into(this)
+        .into(object: CustomViewTarget<ImageView, Drawable>(this) {
+
+            override fun onLoadFailed(errorDrawable: Drawable?) {
+                view.setImageDrawable(errorDrawable)
+            }
+
+            override fun onResourceCleared(placeholder: Drawable?) {
+                view.setImageDrawable(placeholder)
+            }
+
+            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                view.setImageDrawable(resource)
+                onLoaded(resource)
+            }
+        })
 
 internal infix fun View.onClick(function: () -> Unit) {
     setOnClickListener { function() }

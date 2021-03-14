@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/person_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,52 +14,247 @@
         android:foregroundGravity="center"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/autoAdjustImageView"
-        app:layout_constraintBottom_toTopOf="@id/gl3h"/>
+        app:layout_constraintBottom_toTopOf="@id/image_guideline"/>
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginTop="@dimen/size_16"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/gl3h"/>
+    <ImageButton
+        android:id="@+id/ivBackButton"
+        android:layout_width="@dimen/size_42"
+        android:layout_height="@dimen/size_42"
+        android:layout_marginStart="@dimen/size_8"
+        android:foregroundGravity="center"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_arrow_back_24px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvBithYear"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvPerson"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/tvName"/>
+        android:layout_marginStart="@dimen/size_16"
+        android:layout_marginEnd="@dimen/size_16"
+        app:cardCornerRadius="@dimen/size_20"
+        app:cardElevation="@dimen/size_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_guideline">
 
-    <TextView
-        android:id="@+id/tvGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/tvBithYear"/>
-    
-    <TextView
-        android:id="@+id/tvHeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"
-        app:layout_constraintTop_toBottomOf="@id/tvGender"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_size_25"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/ivFavButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Luke Skywalker" />
+
+            <ImageButton
+                android:id="@+id/ivFavButton"
+                android:layout_width="@dimen/size_42"
+                android:layout_height="@dimen/size_42"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:background="@color/transparent"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvBirthYearLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/birthday_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+            <TextView
+                android:id="@+id/tvBirthYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvBirthYearLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                tools:text="19BBY" />
+
+            <TextView
+                android:id="@+id/tvGenderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/gender_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBirthYear" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvGenderLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvBirthYear"
+                tools:text="Male" />
+
+            <TextView
+                android:id="@+id/tvHeightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/height_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvGender" />
+
+            <TextView
+                android:id="@+id/tvHeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvHeightLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvGender"
+                tools:text="172" />
+
+            <TextView
+                android:id="@+id/tvHairColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/hair_color_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHeight" />
+
+            <TextView
+                android:id="@+id/tvHairColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvHairColorLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvHeight"
+                tools:text="blond" />
+
+            <TextView
+                android:id="@+id/tvEyeColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/eye_color_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvHairColor" />
+
+            <TextView
+                android:id="@+id/tvEyeColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvEyeColorLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvHairColor"
+                tools:text="blue" />
+
+            <TextView
+                android:id="@+id/tvSkinColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/skin_color_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEyeColor" />
+
+            <TextView
+                android:id="@+id/tvSkinColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvSkinColorLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvEyeColor"
+                tools:text="fair" />
+
+            <TextView
+                android:id="@+id/tvMassLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_16"
+                android:textColor="@color/secondary_text"
+                android:text="@string/mass_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSkinColor" />
+
+            <TextView
+                android:id="@+id/tvMass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:textColor="@color/primary_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvMassLabel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSkinColor"
+                tools:text="77" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl3h"
+        android:id="@+id/image_guideline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".3"
+        app:layout_constraintGuide_percent=".4"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/card_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".35"
         android:orientation="horizontal"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
